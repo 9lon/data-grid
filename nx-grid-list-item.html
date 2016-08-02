@@ -17,9 +17,21 @@
     <script>
         Polymer({
             is:'nx-grid-list-item',
+            properties:{
+                seleted:{
+                    type:Object,
+                    notify:true
+                }
+            },
+            listeners: {
+                'tap': 'getData'
+            },
             getItem:function(item,data){
-                console.log(item,data);
+                //console.log(item,data);
                 return data[item.item];
+            },
+            getData:function(){
+                this.seleted = this.data;
             }
         });
     </script>

@@ -6,7 +6,7 @@
         
         
         <template is="dom-repeat" items="{{data}}">
-            <nx-grid-list-item data="{{item}}" config="{{config}}"></nx-grid-list-item>
+            <nx-grid-list-item data="{{item}}" config="{{config}}" seleted="{{seleted}}"></nx-grid-list-item>
         </template>
         
         
@@ -15,6 +15,12 @@
     <script>
         Polymer({
             is:'nx-grid-list',
+            properties:{
+                seleted:{
+                    type:Object,
+                    notify:true
+                }
+            },
             observers:['obConfig(config,data)'],
             obConfig:function(config,data){
                 //console.log(config);

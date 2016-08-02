@@ -12,13 +12,17 @@
     <template>
         <content select="items"></content>
         <div class="header"><!-- imp:nx-grid-header --></div>
-        <nx-grid-list config="{{config}}" data="{{data}}"></nx-grid-list>
+        <nx-grid-list config="{{config}}" data="{{data}}" seleted="{{seleted}}"></nx-grid-list>
     </template>
 
     <script>
         Polymer({
             is:'nx-grid',
             properties:{
+                seleted:{
+                    type:Object,
+                    notify:true
+                },
                 config:{
                     type:Object
                 }

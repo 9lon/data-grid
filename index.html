@@ -39,8 +39,7 @@
     <my-el></my-el>
     <dom-module id="my-el">
         <template>
-
-            <nx-grid data="{{data}}">
+            <nx-grid data="{{data}}" seleted="{{dataSelected}}">
                 <items>
                     <list item="id" label="รหัส" width="20%"></list>
                     <list item="name" label="ชื่อ" width="50%"></list>
@@ -67,6 +66,10 @@
                           ]
                         }
                     }
+                },
+                observers:['obSelected(dataSelected)'],
+                obSelected:function(data){
+                  console.log(data);
                 }
             });
         </script>
