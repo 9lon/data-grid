@@ -1,0 +1,54 @@
+<link rel="import" href="nx-grid-header.html">
+<link rel="import" href="nx-grid-list.html">
+
+<dom-module id="nx-grid">
+
+    <style>
+        .header{
+            background-color:#3399FF;
+        }
+    </style>
+
+    <template>
+        <content select="items"></content>
+        <div class="header"><!-- imp:nx-grid-header --></div>
+        <nx-grid-list config="{{config}}" data="{{data}}"></nx-grid-list>
+    </template>
+
+    <script>
+        Polymer({
+            is:'nx-grid',
+            properties:{
+                config:{
+                    type:Object
+                }
+            },
+            ready:function(){
+
+                var items = Polymer.dom(this.$$('[select=items]')).getDistributedNodes()[0];
+                var lists = Polymer.dom(items).querySelectorAll('list');
+
+                var config = [];
+                for (var i = 0; i < lists.length; i++) {
+                    var nodeNxGridHeader = document.createElement('nx-grid-header');
+                    nodeNxGridHeader.label = lists[i].getAttribute('label');
+                    nodeNxGridHeader.width = lists[i].getAttribute('width');
+                    Polymer.dom(this.$$('.header')).appendChild(nodeNxGridHeader);
+
+                    var configPointer = {
+                        item:lists[i].getAttribute('item'),
+                        label:lists[i].getAttribute('label'),
+                        width:lists[i].getAttribute('width')
+                    };
+
+                    config.push(configPointer);
+                }
+
+                this.config = config;
+
+                
+
+            }
+        });
+    </script>
+</dom-module>

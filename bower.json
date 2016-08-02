@@ -1,0 +1,21 @@
+{
+  "name": "nx-grid",
+  "homepage": "https://github.com/nx-element/nx-grid",
+  "authors": [
+    "pongpanot-t <pongpanot-t@nexts-corp.com>"
+  ],
+  "description": "Grid form NX-Element",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "polymer": "Polymer/polymer#^1.6.1",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1"
+  }
+}

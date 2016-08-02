@@ -1,0 +1,24 @@
+<link rel="import" href="nx-grid-list-item.html">
+<dom-module id="nx-grid-list">
+    
+
+    <template>
+        
+        
+        <template is="dom-repeat" items="{{data}}">
+            <nx-grid-list-item data="{{item}}" config="{{config}}"></nx-grid-list-item>
+        </template>
+        
+        
+    </template>
+
+    <script>
+        Polymer({
+            is:'nx-grid-list',
+            observers:['obConfig(config,data)'],
+            obConfig:function(config,data){
+                //console.log(config);
+            }
+        });
+    </script>
+</dom-module>

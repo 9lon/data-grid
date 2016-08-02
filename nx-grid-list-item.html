@@ -1,0 +1,26 @@
+<dom-module id="nx-grid-list-item">
+    <style is="custom-style">
+        .row{
+            @apply(--layout-horizontal);
+            background-color:#ccc;
+        }
+    </style>
+
+    <template>
+        <div class="row">
+            <template is="dom-repeat" items="{{config}}">
+                <div>data:{{getItem(item,data)}} width:{{item.width}} /// <div>
+            </template> 
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is:'nx-grid-list-item',
+            getItem:function(item,data){
+                console.log(item,data);
+                return data[item.item];
+            }
+        });
+    </script>
+</dom-module>
