@@ -40,10 +40,14 @@
     <dom-module id="my-el">
         <template>
             <nx-grid data="{{data}}" seleted="{{dataSelected}}">
-                <items>
+                <items type="primary">
                     <list item="id" label="รหัส" width="20%"></list>
                     <list item="name" label="ชื่อ" width="50%"></list>
                     <list item="detail" label="รายละเอียด" width="30%"></list>
+                </items>
+                <items type="secondary" item="sub">
+                    <list item="id" label="รหัส" width="50%"></list>
+                    <list item="name" label="ชื่อ" width="50%"></list>
                 </items>
             </nx-grid>
 
@@ -58,10 +62,14 @@
                         value:function(){
                           return [
                             {
-                              id:1 , name:'BEE', detail:'บี'
+                              id:1 , name:'BEE', detail:'บี', sub:[
+                                {id:1,name:'ศิริพร'},{id:1,name:'โสสระเกษ'}
+                              ]
                             },
                             { 
-                              id:2 , name:'nk', detail:'น้ำแข็ง'
+                              id:2 , name:'nk', detail:'น้ำแข็ง', sub:[
+                                {id:1,name:'พงศ์ปณต'},{id:1,name:'ทัศนียาชุมพาลี'}
+                              ]
                             }
                           ]
                         }
@@ -69,7 +77,7 @@
                 },
                 observers:['obSelected(dataSelected)'],
                 obSelected:function(data){
-                  console.log(data);
+                  // console.log(data);
                 }
             });
         </script>
