@@ -1,12 +1,20 @@
 <dom-module id="nx-grid-header">
 
     <template>
-        label:{{label}} width:{{width}} ///
+            <template is="dom-if" if="{{_checkType('primary')}}">
+                aa
+            </template>
     </template>
 
     <script>
         Polymer({
-            is:'nx-grid-header'
+            is:'nx-grid-header',
+            _checkType:function(type){
+                return this.type==type;
+            },
+            ready:function(){
+                console.log(this.type);
+            }
         });
     </script>
 </dom-module>
