@@ -4,14 +4,22 @@
             @apply(--layout-horizontal);
             background-color:#ccc;
         }
+        .flexchild-1 {
+         @apply(--layout-flex);
+        }
+        paper-item.buttomItem {
+          border-bottom: 1px solid #000;
+        }
     </style>
 
     <template>
-        <div class="row">
+        <!-- <div class="row "> -->
+          <paper-item class="buttomItem">
             <template is="dom-repeat" items="{{config}}">
-                <div>data:{{getItem(item,data)}} width:{{item.width}} /// <div>
-            </template> 
-        </div>
+                <div class="flexchild-1">data:{{getItem(item,data)}} width:{{item.width}} /// <div>
+            </template>
+          </paper-item>
+        <!-- </div> -->
     </template>
 
     <script>
