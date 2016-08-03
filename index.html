@@ -31,11 +31,13 @@
     </script>
     <link rel="import" href="bower_components/polymer/polymer.html">
     <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
     <link rel="import" href="nx-grid.html">
 
   </head>
   <body>
-      
+
     <my-el></my-el>
     <dom-module id="my-el">
         <template>
@@ -66,7 +68,7 @@
                                 {id:1,name:'ศิริพร'},{id:1,name:'โสสระเกษ'}
                               ]
                             },
-                            { 
+                            {
                               id:2 , name:'nk', detail:'น้ำแข็ง', sub:[
                                 {id:1,name:'พงศ์ปณต'},{id:1,name:'ทัศนียาชุมพาลี'}
                               ]
@@ -77,7 +79,7 @@
                 },
                 observers:['obSelected(dataSelected)'],
                 obSelected:function(data){
-                  // console.log(data);
+                  console.log(data);
                 }
             });
         </script>

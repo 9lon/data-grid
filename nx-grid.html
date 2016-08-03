@@ -33,7 +33,7 @@
 
                 var items = Polymer.dom(this.$.primary).getDistributedNodes();
                 var lists = Polymer.dom(items[0]).querySelectorAll('list');
-                
+
                 for (var i = 0; i < lists.length; i++) {
                     var nodeNxGridHeader = document.createElement('nx-grid-header');
                     nodeNxGridHeader.label = lists[i].getAttribute('label');
