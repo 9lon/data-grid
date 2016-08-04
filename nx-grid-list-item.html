@@ -1,36 +1,51 @@
 <dom-module id="nx-grid-list-item">
     <style is="custom-style">
-        .row{
+        .primary{
             @apply(--layout-horizontal);
             background-color:#ccc;
+        }
+        .secondary{
+            @apply(--layout-horizontal);
+            background-color:#F57F17;
         }
     </style>
 
     <template>
-        <div class="row">
-            <template is="dom-repeat" items="{{config}}">
-                <div>data:{{getItem(item,data)}} width:{{item.width}} /// <div>
-            </template> 
-        </div>
+        <template is="dom-if" if="{{_checkType(type,'primary')}}">
+            <div class="primary">
+                <template is="dom-repeat" items="{{config}}">
+                    <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
+                </template> 
+            </div>
+        </template> 
+        <template is="dom-if" if="{{_checkType(type,'secondary')}}">
+            <div class="secondary">
+                <template is="dom-repeat" items="{{config}}">
+                    <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
+                </template> 
+            </div>
+        </template> 
     </template>
 
     <script>
         Polymer({
             is:'nx-grid-list-item',
+            listeners: {
+                'tap': 'getData'
+            },
             properties:{
                 seleted:{
                     type:Object,
                     notify:true
                 }
             },
-            listeners: {
-                'tap': 'getData'
+            _checkType:function(type,select){
+                return type==select;
             },
             getItem:function(item,data){
-                //console.log(item,data);
                 return data[item.item];
             },
-            getData:function(){
+            getData:function(e){
                 this.seleted = this.data;
             }
         });

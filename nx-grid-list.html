@@ -4,12 +4,12 @@
 
     <template>
         <template is="dom-repeat" items="{{data}}">
-            <nx-grid-list-item data="{{item}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>
+            <nx-grid-list-item type="primary" data="{{item}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>
+            <nx-grid-header type="secondary" config="{{config}}"></nx-grid-header>
             <template is="dom-repeat" as="subItem" items="{{getSubData(item)}}">
-                <!--<nx-grid-list-item data="{{subItem}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>-->
+                <nx-grid-list-item type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}"></nx-grid-list-item>
             </template>
         </template>
-        
         
     </template>
 

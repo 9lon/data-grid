@@ -5,8 +5,8 @@
     <template>
         <content id="primary" select="items[type=primary]"></content>
         <content id="secondary" select="items[type=secondary]"></content>
-
-        <nx-grid-header type="primary"></nx-grid-header>
+        
+        <nx-grid-header type="primary" config="{{config}}"></nx-grid-header>
         <nx-grid-list config="{{config}}" data="{{data}}" seleted="{{seleted}}"></nx-grid-list>
     </template>
 
@@ -55,7 +55,6 @@
 
                 config.sub = Polymer.dom(this.$.secondary).getDistributedNodes()[0].getAttribute('item');
 
-                console.log(config);
                 this.config = config;
             }
         });

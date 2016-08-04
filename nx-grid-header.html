@@ -1,20 +1,42 @@
+
 <dom-module id="nx-grid-header">
 
     <template>
-            <template is="dom-if" if="{{_checkType('primary')}}">
-                aa
-            </template>
+        <style>
+            .primary{
+                background-color:#3399ff;
+            }
+            .secondary{
+                background-color:yellow;
+            }
+        </style>
+        <template is="dom-if" if="{{_checkType(type,'primary')}}">
+            <div class="primary">
+                <template is="dom-repeat" items="{{_selectConfig(type,config)}}">
+                    label:{{item.label}} width:{{item.width}} ///
+                </template>
+            </div>
+        </template>
+
+        <template is="dom-if" if="{{_checkType(type,'secondary')}}">
+            <div class="secondary">
+                <template is="dom-repeat" items="{{_selectConfig(type,config)}}">
+                    label:{{item.label}} width:{{item.width}} ///
+                </template>
+            </div>
+        </template>
+        
     </template>
 
     <script>
         Polymer({
             is:'nx-grid-header',
-            _checkType:function(type){
-                return this.type==type;
+            _checkType:function(type,select){
+                return type==select;
             },
-            ready:function(){
-                console.log(this.type);
-            }
+            _selectConfig:function(type,config){
+                return this.config[type];
+            },
         });
     </script>
 </dom-module>
