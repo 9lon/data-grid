@@ -1,0 +1,18 @@
+nx-grid-component
+<dom-module id="nx-grid-component">
+    <template>
+        aaaaaaaaa
+        <content id="content"></content>
+        <div id="test"></div>
+    </template>
+
+    <script>
+        Polymer({
+            is:'nx-grid-component',
+            ready:function(){
+                console.log(this.$.content.getDistributedNodes()[0]);
+                //this.$.test();
+            }
+        });
+    </script>
+</dom-module>

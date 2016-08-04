@@ -32,6 +32,8 @@
     <link rel="import" href="bower_components/polymer/polymer.html">
     <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="nx-grid.html">
+    <link rel="import" href="primary-component.html">
+    <link rel="import" href="secondary-component.html">
 
   </head>
   <body>
@@ -43,12 +45,18 @@
                 <items type="primary">
                     <list item="id" label="รหัส" width="20%"></list>
                     <list item="name" label="ชื่อ" width="50%"></list>
-                    <list item="detail" label="รายละเอียด" width="30%"></list>
+                    <list item="detail" label="รายละเอียด" width="30%"></list>   
                 </items>
+                <component type="primary">
+                  <primary-component></primary-component>
+                </component>
                 <items type="secondary" item="sub">
-                    <list item="id" label="รหัส" width="50%"></list>
-                    <list item="name" label="ชื่อ" width="50%"></list>
+                  <list item="id" label="รหัส" width="50%"></list>
+                  <list item="name" label="ชื่อ" width="50%"></list>
                 </items>
+                <component type="secondary">
+                  <secondary-component></secondary-component>
+                </component>
             </nx-grid>
 
         </template>

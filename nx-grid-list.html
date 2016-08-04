@@ -1,14 +1,20 @@
 <link rel="import" href="nx-grid-list-item.html">
+<link rel="import" href="nx-grid-component.html">
 <dom-module id="nx-grid-list">
     
-
+    <content id="content"></content>
+    <div id="x">xxxx</div>
     <template>
+        
         <template is="dom-repeat" items="{{data}}">
             <nx-grid-list-item type="primary" data="{{item}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>
             <nx-grid-header type="secondary" config="{{config}}"></nx-grid-header>
             <template is="dom-repeat" as="subItem" items="{{getSubData(item)}}">
                 <nx-grid-list-item type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}"></nx-grid-list-item>
+                
             </template>
+            
+            <!--<nx-grid-component><content></content></nx-grid-component>-->
         </template>
         
     </template>
@@ -23,7 +29,7 @@
                 }
             },
             ready:function(){
-                //console.log(this.content);
+                console.log(Polymer.dom(this.$.content).getDistributedNodes());
             },
             observers:['obConfig(config,data)'],
             obConfig:function(config,data){
