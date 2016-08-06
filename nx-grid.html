@@ -5,11 +5,8 @@
     <template>
         <content id="primary" select="items[type=primary]"></content>
         <content id="secondary" select="items[type=secondary]"></content>
-
         <nx-grid-header type="primary" config="{{config}}"></nx-grid-header>
-        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}">
-            <content select="component[type=secondary]"></content>
-        </nx-grid-list>
+        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}"></nx-grid-list>
         <content select="component[type=primary]"></content>
     </template>
 
@@ -24,6 +21,10 @@
                 config:{
                     type:Object
                 }
+            },
+            observers:['select(seleted)'],
+            select:function(data){
+                console.log(data);
             },
             ready:function(){
                 var config = {primary:[],secondary:[]};
@@ -61,12 +62,6 @@
                 this.config = config;
             }
         });
-
-        nxGridBehavior = {
-            setSecondary:function(components){
-                componentSecondary = components;
-            }
-        };
 
     </script>
 </dom-module>

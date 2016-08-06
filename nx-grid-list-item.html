@@ -12,14 +12,14 @@
 
     <template>
         <template is="dom-if" if="{{_checkType(type,'primary')}}">
-            <div class="primary">
+            <div class="primary" on-tap="getData" on-dblclick="dblclick">
                 <template is="dom-repeat" items="{{config}}">
                     <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
                 </template> 
             </div>
         </template> 
         <template is="dom-if" if="{{_checkType(type,'secondary')}}">
-            <div class="secondary">
+            <div class="secondary" on-tap="getData" on-dblclick="dblclick">
                 <template is="dom-repeat" items="{{config}}">
                     <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
                 </template> 
@@ -31,9 +31,6 @@
     <script>
         Polymer({
             is:'nx-grid-list-item',
-            listeners: {
-                'tap': 'getData'
-            },
             properties:{
                 seleted:{
                     type:Object,
@@ -54,6 +51,10 @@
             },
             getData:function(e){
                 this.seleted = this.data;
+                this.fire('item-tap', {kicked: true});
+            },
+            dblclick:function(){
+                this.fire('item-dbclick', {kicked: true});
             }
         });
     </script>

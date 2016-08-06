@@ -2,8 +2,7 @@
 <link rel="import" href="nx-grid-component.html">
 <dom-module id="nx-grid-list">
     
-    <content id="content"></content>
-    <div id="x">xxxx</div>
+
     <template>
         
         <template is="dom-repeat" items="{{data}}">
@@ -12,8 +11,6 @@
             <template is="dom-repeat" as="subItem" items="{{getSubData(item)}}">
                 <nx-grid-list-item secondary="{{secondary}}" type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}" item="{{item}}" index="{{index}}"></nx-grid-list-item>
             </template>
-            
-            <!--<nx-grid-component><content></content></nx-grid-component>-->
         </template>
         
     </template>

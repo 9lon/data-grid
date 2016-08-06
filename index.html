@@ -54,17 +54,13 @@
                   <list item="id" label="รหัส" width="50%"></list>
                   <list item="name" label="ชื่อ" width="50%"></list>
                 </items>
-                <component type="secondary">
-                  <secondary-component></secondary-component>
-                </component>
             </nx-grid>
 
         </template>
 
         <script>
             Polymer({
-                is:'my-el',
-                behaviors:[nxGridBehavior],
+                is:'my-el', 
                 properties:{
                     data:{
                         type:Object,
@@ -85,7 +81,12 @@
                     }
                 },
                 ready:function(){
-                  this.setSecondary('ssss');
+                    this.$$('nx-grid').addEventListener('item-tap', (e) => {
+                        console.log('tap');
+                    }),
+                    this.$$('nx-grid').addEventListener('item-dbclick', (e) => {
+                        console.log('dbclick');
+                    })
                 }
                 
             });
