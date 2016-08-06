@@ -7,7 +7,7 @@
         <content id="secondary" select="items[type=secondary]"></content>
 
         <nx-grid-header type="primary" config="{{config}}"></nx-grid-header>
-        <nx-grid-list config="{{config}}" data="{{data}}" seleted="{{seleted}}">
+        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}">
             <content select="component[type=secondary]"></content>
         </nx-grid-list>
         <content select="component[type=primary]"></content>
@@ -61,5 +61,12 @@
                 this.config = config;
             }
         });
+
+        nxGridBehavior = {
+            setSecondary:function(components){
+                componentSecondary = components;
+            }
+        };
+
     </script>
 </dom-module>

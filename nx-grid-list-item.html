@@ -24,7 +24,8 @@
                     <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
                 </template> 
             </div>
-        </template> 
+        </template>
+        <div id="secondary"></div>
     </template>
 
     <script>
@@ -37,6 +38,12 @@
                 seleted:{
                     type:Object,
                     notify:true
+                }
+            },
+            ready:function(){
+                if(this.type == 'secondary' && (this.item.sub.length==this.index+1)){
+                    var el = document.createElement(this.secondary);
+                    this.$.secondary.appendChild(el);
                 }
             },
             _checkType:function(type,select){

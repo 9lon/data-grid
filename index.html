@@ -41,7 +41,7 @@
     <my-el></my-el>
     <dom-module id="my-el">
         <template>
-            <nx-grid data="{{data}}" seleted="{{dataSelected}}">
+            <nx-grid data="{{data}}" seleted="{{dataSelected}}" secondary="secondary-component">
                 <items type="primary">
                     <list item="id" label="รหัส" width="20%"></list>
                     <list item="name" label="ชื่อ" width="50%"></list>
@@ -64,6 +64,7 @@
         <script>
             Polymer({
                 is:'my-el',
+                behaviors:[nxGridBehavior],
                 properties:{
                     data:{
                         type:Object,
@@ -83,10 +84,10 @@
                         }
                     }
                 },
-                observers:['obSelected(dataSelected)'],
-                obSelected:function(data){
-                  console.log(data);
+                ready:function(){
+                  this.setSecondary('ssss');
                 }
+                
             });
         </script>
 

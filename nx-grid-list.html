@@ -10,8 +10,7 @@
             <nx-grid-list-item type="primary" data="{{item}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>
             <nx-grid-header type="secondary" config="{{config}}"></nx-grid-header>
             <template is="dom-repeat" as="subItem" items="{{getSubData(item)}}">
-                <nx-grid-list-item type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}"></nx-grid-list-item>
-                
+                <nx-grid-list-item secondary="{{secondary}}" type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}" item="{{item}}" index="{{index}}"></nx-grid-list-item>
             </template>
             
             <!--<nx-grid-component><content></content></nx-grid-component>-->
@@ -29,11 +28,7 @@
                 }
             },
             ready:function(){
-                console.log(Polymer.dom(this.$.content).getDistributedNodes());
-            },
-            observers:['obConfig(config,data)'],
-            obConfig:function(config,data){
-                // /console.log(config);
+
             },
             getSubData:function(subData){
                 return subData.sub;
