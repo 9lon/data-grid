@@ -5,8 +5,8 @@
     <template>
         <content id="primary" select="items[type=primary]"></content>
         <content id="secondary" select="items[type=secondary]"></content>
-        <nx-grid-header type="primary" config="{{config}}"></nx-grid-header>
-        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}"></nx-grid-list>
+        <nx-grid-header sort-select="{{sortSelect}}" type="primary" config="{{config}}"></nx-grid-header>
+        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}" sort-select="{{sortSelect}}"></nx-grid-list>
         <content select="component[type=primary]"></content>
     </template>
 
