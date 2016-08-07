@@ -14,18 +14,21 @@
         <template is="dom-if" if="{{_checkType(type,'primary')}}">
             <div class="primary" on-tap="getData" on-dblclick="dblclick">
                 <template is="dom-repeat" items="{{config}}">
-                    <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
+                    <div>{{getItem(item,subData)}} width:{{item.width}} /// <div>
                 </template> 
             </div>
         </template> 
         <template is="dom-if" if="{{_checkType(type,'secondary')}}">
             <div class="secondary" on-tap="getData" on-dblclick="dblclick">
                 <template is="dom-repeat" items="{{config}}">
-                    <div>{{getItem(item,data)}} width:{{item.width}} /// <div>
+                    <div>{{getItem(item,subData)}} width:{{item.width}} /// <div>
                 </template> 
             </div>
+            <template is="dom-if" if="{{_checkLastSecondary(item,index)}}">
+                <!--<nx-grid-component secondary="{{secondary}}" data="{{data}}" item="{{item}}" index="{{index}}"></nx-grid-component>-->
+                <div is="secondary-component" data="{{data}}" item="{{item}}" index="{{index}}"></div>
+            </template>
         </template>
-        <div id="secondary"></div>
     </template>
 
     <script>
@@ -37,20 +40,20 @@
                     notify:true
                 }
             },
-            ready:function(){
-                if(this.type == 'secondary' && (this.item.sub.length==this.index+1)){
-                    var el = document.createElement(this.secondary);
-                    this.$.secondary.appendChild(el);
-                }
+            evetFun:function(){
+                console.log('okaa');
+            },
+            _checkLastSecondary:function(item,index){
+                return item.sub.length==index+1;
             },
             _checkType:function(type,select){
                 return type==select;
             },
-            getItem:function(item,data){
-                return data[item.item];
+            getItem:function(item,subData){
+                return subData[item.item];
             },
             getData:function(e){
-                this.seleted = this.data;
+                this.seleted = this.subData;
                 this.fire('item-tap', {kicked: true});
             },
             dblclick:function(){

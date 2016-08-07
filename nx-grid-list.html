@@ -8,7 +8,7 @@
             <nx-grid-list-item type="primary" data="{{item}}" config="{{config.primary}}" seleted="{{seleted}}"></nx-grid-list-item>
             <nx-grid-header type="secondary" config="{{config}}"></nx-grid-header>
             <template is="dom-repeat" as="subItem" items="{{getSubData(item)}}">
-                <nx-grid-list-item secondary="{{secondary}}" type="secondary" data="{{subItem}}" config="{{config.secondary}}" seleted="{{seleted}}" item="{{item}}" index="{{index}}"></nx-grid-list-item>
+                <nx-grid-list-item secondary="{{secondary}}" type="secondary" sub-data="{{subItem}}" data="{{item}}" config="{{config.secondary}}" seleted="{{seleted}}" item="{{item}}" index="{{index}}"></nx-grid-list-item>
             </template>
         </template>
         
@@ -25,8 +25,14 @@
             },
             observers:['obSortSelect(sortSelect)'],
             obSortSelect:function(sort){
-                //console.log(sort);
+                
                 this.$.repeatPrimary.render();
+                for (i = 0; i < nxGridRender.length; i++) { 
+                    console.log(nxGridRender[i]);
+                    //nxGridRender[i].evetFun();
+                    //nxGridRender[i].getElementById('secondary');
+                }
+
             },
             getSubData:function(subData){
                 return subData.sub;
@@ -36,12 +42,9 @@
                 if(typeof this.sortSelect == "undefined"){
                     return 0;
                 }else{
-                    
                     return item1[this.sortSelect]<item2[this.sortSelect];
                 }
                 //console.log(item1,item2);
-                
-                
             }
         });
     </script>
