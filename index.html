@@ -51,15 +51,14 @@
                     <list item="name" label="ชื่อ" width="50%"></list>
                     <list item="detail" label="รายละเอียด" width="30%"></list>
                 </items>
-                <component type="primary">
+                <!--<component type="primary">
                   <primary-component></primary-component>
-                </component>
+                </component>-->
                 <items type="secondary" item="sub">
                   <list item="id" label="รหัส" width="50%"></list>
                   <list item="name" label="ชื่อ" width="50%"></list>
                 </items>
             </nx-grid>
-            <my-menu></my-menu>
         </template>
 
         <script>
@@ -71,13 +70,13 @@
                         value:function(){
                           return [
                             {
-                              id:1 , name:'BEE', detail:'บี', sub:[
-                                {id:1,name:'ศิริพร'},{id:1,name:'โสสระเกษ'}
+                              id:1 , name:'COFCO ประเทศจีน', detail:'ทดสอ[ข้อความ', sub:[
+                                {id:1,name:'sum1'},{id:1,name:'sum2'}
                               ]
                             },
                             {
-                              id:2 , name:'nk', detail:'น้ำแข็ง', sub:[
-                                {id:1,name:'พงศ์ปณต'},{id:1,name:'ทัศนียาชุมพาลี'}
+                              id:2 , name:'BULOG ประเทศxx', detail:'ทดสอบข้อความ', sub:[
+                                {id:1,name:'sum1'},{id:1,name:'sum2'}
                               ]
                             }
                           ]
@@ -85,11 +84,11 @@
                     }
                 },
                 ready:function(){
-                    this.$$('nx-grid').addEventListener('item-tap', (e) => {
-                        console.log('tap');
+                    this.$$('nx-grid').addEventListener('nx-grid-tap', (e) => {
+                        console.log('click',e.detail.data);
                     }),
-                    this.$$('nx-grid').addEventListener('item-dbclick', (e) => {
-                        console.log('dbclick');
+                    this.$$('nx-grid').addEventListener('nx-grid-dblclick', (e) => {
+                        console.log('dblclick',e.detail.data);
                     })
                 }
 

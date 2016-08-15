@@ -1,0 +1,54 @@
+
+<dom-module id="nx-grid-header">
+
+    <template>
+        <style>
+            .primary{
+                background-color:#3399ff;
+            }
+            .secondary{
+                background-color:yellow;
+            }
+        </style>
+        <template is="dom-if" if="{{_checkType(type,'primary')}}">
+            <div class="primary">
+                <template is="dom-repeat" items="{{_selectConfig(type,config)}}">
+                    <span on-tap="_sortItem" index$="{{index}}">label:{{item.label}} width:{{item.width}} ///</span>
+                </template>
+            </div>
+        </template>
+
+        <template is="dom-if" if="{{_checkType(type,'secondary')}}">
+            <div class="secondary">
+                <template is="dom-repeat" items="{{_selectConfig(type,config)}}">
+                    <span>label:{{item.label}} width:{{item.width}} ///</span>
+                </template>
+            </div>
+        </template>
+        
+    </template>
+
+    <script>
+        Polymer({
+            is:'nx-grid-header',
+            properties:{
+                sortSelect:{
+                    type:String,
+                    notify:true
+                }
+            },
+            _checkType:function(type,select){
+                return type==select;
+            },
+            _selectConfig:function(type,config){
+                return this.config[type];
+            },
+            _sortItem:function(e){
+                var index = e.target.getAttribute('index');
+                this.sortSelect = this.config.secondary[index].item;
+                
+                //console.log(this.sortSelect);
+            }
+        });
+    </script>
+</dom-module>

@@ -1,13 +1,55 @@
-<link rel="import" href="nx-grid-header.html">
-<link rel="import" href="nx-grid-list.html">
+
 
 <dom-module id="nx-grid">
+    <style>
+        paper-item {
+            --paper-item: {
+                cursor: pointer;
+            };
+        }
+        .sublist paper-item {
+            padding-left: 30px;
+        }
+
+    </style>
     <template>
         <content id="primary" select="items[type=primary]"></content>
         <content id="secondary" select="items[type=secondary]"></content>
-        <nx-grid-header sort-select="{{sortSelect}}" type="primary" config="{{config}}"></nx-grid-header>
-        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}" sort-select="{{sortSelect}}"></nx-grid-list>
-        <content select="component[type=primary]"></content>
+
+        <div class="horizontal-section">
+            <div>
+                Head primary Level 1
+                <template is="dom-repeat" as="itemConfigPrimary" items="{{config.primary}}">
+                    {{itemConfigPrimary.label}} width:{{itemConfigPrimary.width}} /// 
+                </template>
+            </div>
+            <paper-menu attr-for-item-title="label" multi>
+                <template is="dom-repeat" as="itemPrimary" items="{{data}}">
+                    <paper-submenu label$="{{index}}">
+                        <paper-item on-tap="_getBind" on-dblclick="_getBind" data="{{itemPrimary}}" class="menu-trigger">
+                            <template is="dom-repeat" as="configPrimary" items="{{config.primary}}">
+                                {{_getItemPrimary(itemPrimary,configPrimary)}} width:{{configPrimary.width}} /// 
+                            </template>
+                        </paper-item>
+                        <paper-menu class="menu-content sublist">
+                            <paper-item>
+                                Head secondary
+                                <template is="dom-repeat" as="itemConfigSecondary" items="{{config.secondary}}">
+                                    {{itemConfigSecondary.label}} width:{{itemConfigSecondary.width}} ///
+                                </template>
+                            </paper-item>
+                            <template is="dom-repeat" as="itemSecondary" items="{{_getDataSub(itemPrimary,config.sub)}}">
+                                <paper-item on-tap="_getBind" on-dblclick="_getBind" data="{{itemSecondary}}">
+                                    <template is="dom-repeat" as="configSecondary" items="{{config.secondary}}">
+                                        {{_getItemSecondary(itemSecondary,configSecondary)}} width:{{configSecondary.width}} ///
+                                    </template>
+                                <paper-item>
+                            </template>
+                        </paper-menu>
+                    </paper-submenu>
+                </template>
+            </paper-menu>
+        </div>
     </template>
 
     <script>
@@ -61,6 +103,18 @@
                 config.sub = Polymer.dom(this.$.secondary).getDistributedNodes()[0].getAttribute('item');
 
                 this.config = config;
+            },
+            _getItemPrimary:function(item,config){
+                return item[config.item];
+            },
+            _getDataSub:function(item,sub){
+                return item[sub];
+            },
+            _getItemSecondary:function(item,config){
+                return item[config.item];
+            },
+            _getBind:function(e){
+                this.fire('nx-grid-'+e.type, {data: e.target.data});
             }
         });
 

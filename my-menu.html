@@ -8,55 +8,23 @@
     .sublist paper-item {
       padding-left: 30px;
     }
-    .sublist2 paper-item {
-      padding-left: 50px;
-    }
+
   </style>
   <template>
     <div class="horizontal-section">
         <paper-menu attr-for-item-title="label" multi>
+
           <paper-submenu label="COFCO">
-            <paper-item class="menu-trigger">COFCO ประเทศจีน</paper-item>
-            <paper-menu class="menu-content sublist" multi>
-              <paper-submenu label="Confirmation">
-                <paper-item class="menu-trigger">Confirmation Letter</paper-item>
-                <paper-menu class="menu-content sublist2">
-                  <paper-item>Confirmation Letter No.11</paper-item>
-                  <paper-item>Confirmation Letter No.12</paper-item>
-                </paper-menu>
-              </paper-submenu>
-              <paper-item >+ เพิ่ม Confirmation Letter </paper-item>
-          </paper-menu>
-        </paper-submenu>
-
-        <paper-submenu label="BULOG">
-          <paper-item class="menu-trigger">BULOG ประเทศจีน</paper-item>
-          <paper-menu class="menu-content sublist" multi>
-            <paper-submenu label="Confirmation">
-              <paper-item class="menu-trigger">Confirmation Letter</paper-item>
-              <paper-menu class="menu-content sublist2">
-                <paper-item>Confirmation Letter No.1</paper-item>
-                <paper-item>Confirmation Letter No.2</paper-item>
-              </paper-menu>
-            </paper-submenu>
-            <paper-item >+ เพิ่ม Confirmation Letter </paper-item>
-        </paper-menu>
-        </paper-submenu>
-
-          <paper-submenu label="NFA" >
-            <paper-item class="menu-trigger">NFA ประเทศฟิลิปินส์</paper-item>
-            <paper-menu class="menu-content sublist" multi>
-              <paper-submenu label="Confirmation">
-                <paper-item class="menu-trigger">Confirmation Letter</paper-item>
-                <paper-menu class="menu-content sublist2">
-                  <paper-item>Confirmation Letter No.5</paper-item>
-                  <paper-item>Confirmation Letter No.6</paper-item>
-                </paper-menu>
-              </paper-submenu>
-              <paper-item >+ เพิ่ม Confirmation Letter </paper-item>
-          </paper-menu>
+              <paper-item class="menu-trigger">COFCO ประเทศจีน</paper-item>
+              <paper-menu class="menu-content sublist">
+                <paper-item>Confirmation Letter</paper-item>
+                <paper-item>Confirmation Letter No.11</paper-item>
+                <paper-item>Confirmation Letter No.12</paper-item>
+            </paper-menu>
           </paper-submenu>
+        
         </paper-menu>
+    </div>
   </template>
   <script>
     Polymer({

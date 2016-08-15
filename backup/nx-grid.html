@@ -1,0 +1,68 @@
+<link rel="import" href="nx-grid-header.html">
+<link rel="import" href="nx-grid-list.html">
+
+<dom-module id="nx-grid">
+    <template>
+        <content id="primary" select="items[type=primary]"></content>
+        <content id="secondary" select="items[type=secondary]"></content>
+        <nx-grid-header sort-select="{{sortSelect}}" type="primary" config="{{config}}"></nx-grid-header>
+        <nx-grid-list secondary="{{secondary}}" config="{{config}}" data="{{data}}" seleted="{{seleted}}" sort-select="{{sortSelect}}"></nx-grid-list>
+        <content select="component[type=primary]"></content>
+    </template>
+
+    <script>
+        var nxGridRender = [];
+        Polymer({
+            is:'nx-grid',
+            properties:{
+                seleted:{
+                    type:Object,
+                    notify:true
+                },
+                config:{
+                    type:Object
+                }
+            },
+            observers:['select(seleted)'],
+            select:function(data){
+                console.log(data);
+            },
+            ready:function(){
+                var config = {primary:[],secondary:[]};
+
+                var items = Polymer.dom(this.$.primary).getDistributedNodes();
+                var lists = Polymer.dom(items[0]).querySelectorAll('list');
+                
+                for (var i = 0; i < lists.length; i++) {
+
+                    var configPointer = {
+                        item:lists[i].getAttribute('item'),
+                        label:lists[i].getAttribute('label'),
+                        width:lists[i].getAttribute('width')
+                    };
+
+                    config.primary.push(configPointer);
+                }
+
+                var items2 = Polymer.dom(this.$.secondary).getDistributedNodes();
+                var lists2 = Polymer.dom(items2[0]).querySelectorAll('list');
+
+                for (var i = 0; i < lists2.length; i++) {
+
+                    var configPointer2 = {
+                        item:lists2[i].getAttribute('item'),
+                        label:lists2[i].getAttribute('label'),
+                        width:lists2[i].getAttribute('width')
+                    };
+
+                    config.secondary.push(configPointer2);
+                }
+
+                config.sub = Polymer.dom(this.$.secondary).getDistributedNodes()[0].getAttribute('item');
+
+                this.config = config;
+            }
+        });
+
+    </script>
+</dom-module>
