@@ -31,13 +31,17 @@
     </script>
     <link rel="import" href="bower_components/polymer/polymer.html">
     <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+    <link rel="import" href="bower_components/paper-menu/paper-submenu.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
     <link rel="import" href="nx-grid.html">
     <link rel="import" href="primary-component.html">
     <link rel="import" href="secondary-component.html">
+    <link rel="import" href="my-menu.html">
 
   </head>
   <body>
-      
+
     <my-el></my-el>
     <dom-module id="my-el">
         <template>
@@ -45,7 +49,7 @@
                 <items type="primary">
                     <list item="id" label="รหัส" width="20%"></list>
                     <list item="name" label="ชื่อ" width="50%"></list>
-                    <list item="detail" label="รายละเอียด" width="30%"></list>   
+                    <list item="detail" label="รายละเอียด" width="30%"></list>
                 </items>
                 <component type="primary">
                   <primary-component></primary-component>
@@ -55,12 +59,12 @@
                   <list item="name" label="ชื่อ" width="50%"></list>
                 </items>
             </nx-grid>
-
+            <my-menu></my-menu>
         </template>
 
         <script>
             Polymer({
-                is:'my-el', 
+                is:'my-el',
                 properties:{
                     data:{
                         type:Object,
@@ -71,7 +75,7 @@
                                 {id:1,name:'ศิริพร'},{id:1,name:'โสสระเกษ'}
                               ]
                             },
-                            { 
+                            {
                               id:2 , name:'nk', detail:'น้ำแข็ง', sub:[
                                 {id:1,name:'พงศ์ปณต'},{id:1,name:'ทัศนียาชุมพาลี'}
                               ]
@@ -88,7 +92,7 @@
                         console.log('dbclick');
                     })
                 }
-                
+
             });
         </script>
 
