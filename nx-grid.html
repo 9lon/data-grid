@@ -1,4 +1,4 @@
-
+<link rel="import" href="nx-grid-component.html">
 
 <dom-module id="nx-grid">
     <style>
@@ -12,9 +12,12 @@
         }
 
     </style>
+
     <template>
         <content id="primary" select="items[type=primary]"></content>
         <content id="secondary" select="items[type=secondary]"></content>
+        <content select="template[type=primary]"></content>
+        <content select="template[type=secondary]"></content>
 
         <div class="horizontal-section">
             <div>
@@ -45,10 +48,16 @@
                                     </template>
                                 <paper-item>
                             </template>
+                            <paper-item class="testclass">
+                                <nx-grid-component temp="{{tempSecondary}}"></nx-grid-component>
+                            </paper-item>
                         </paper-menu>
                     </paper-submenu>
                 </template>
             </paper-menu>
+            <div>
+                <nx-grid-component temp="{{tempPrimary}}"></nx-grid-component>
+            </div>
         </div>
     </template>
 
@@ -56,6 +65,7 @@
         var nxGridRender = [];
         Polymer({
             is:'nx-grid',
+            behaviors:[Polymer.Templatizer],
             properties:{
                 seleted:{
                     type:Object,
@@ -65,11 +75,15 @@
                     type:Object
                 }
             },
-            observers:['select(seleted)'],
-            select:function(data){
-                console.log(data);
-            },
             ready:function(){
+
+                var templatePrimary = Polymer.dom(this).querySelector('template[type=primary]');
+                this.tempPrimary = templatePrimary;
+
+                var templateSecondary = Polymer.dom(this).querySelector('template[type=secondary]');
+                this.tempSecondary = templateSecondary;
+                
+
                 var config = {primary:[],secondary:[]};
 
                 var items = Polymer.dom(this.$.primary).getDistributedNodes();
