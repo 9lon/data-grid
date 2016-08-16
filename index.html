@@ -31,6 +31,7 @@
     </script>
     <link rel="import" href="bower_components/polymer/polymer.html">
     <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout-classes.html">
     <link rel="import" href="bower_components/paper-menu/paper-menu.html">
     <link rel="import" href="bower_components/paper-menu/paper-submenu.html">
     <link rel="import" href="bower_components/paper-item/paper-item.html">
@@ -43,21 +44,21 @@
     <dom-module id="my-el">
         <template>
             <nx-grid data="{{data}}" seleted="{{dataSelected}}" secondary="secondary-component">
-                <items type="primary">
-                    <list item="id" label="รหัส" width="20%"></list>
-                    <list item="name" label="ชื่อ" width="50%"></list>
-                    <list item="detail" label="รายละเอียด" width="30%"></list>
-                </items>
-                <items type="secondary" item="sub">
-                  <list item="id" label="รหัส" width="50%"></list>
-                  <list item="name" label="ชื่อ" width="50%"></list>
-                </items>
-                <template type="primary">
-                    <input placeholder="text" value="primary">
-                </template>
-                <template type="secondary">
-                    <input placeholder="text" value="secondary">
-                </template>
+              <items type="primary">
+                <list item="id" label="รหัส" width="flex"></list>
+                <list item="name" label="ชื่อ" width="flex-2"></list>
+                <list item="detail" label="รายละเอียด" width="flex-2"></list>
+              </items>
+              <items type="secondary" item="sub">
+                <list item="id" label="รหัส" width="flex"></list>
+                <list item="name" label="ชื่อ" width="flex-2"></list>
+              </items>
+              <template type="primary">
+                <input placeholder="text" value="primary">
+              </template>
+              <template type="secondary">
+                <input placeholder="text" value="secondary">
+              </template>
             </nx-grid>
         </template>
         
